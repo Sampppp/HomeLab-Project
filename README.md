@@ -74,12 +74,12 @@ volumes:
 ```
 ## VM 100 (TrueNAS-scale)
 Created a VM with 8Gb of ram and 2 and 4 CPUs. I needed to configue the VM to use the connected hardrives, so from the node shell I ran `nano /etc/pve/qemu-server/100.conf`, 100 being the ID of the VM, and then added the lines:
-`
+```
 scsi1: /dev/disk/by-id/scsi-35000c500a6517c77
 scsi2: /dev/disk/by-id/scsi-35000c500a65354ef
 scsi3: /dev/disk/by-id/scsi-35000c500a6536c2b
 scsi4: /dev/disk/by-id/scsi-35000c500a655c1d3
-`
+```
 ID for the drives were found by doing `ls -l /dev/disk/by-id/`
 For stoarage I created a pool with the 4 hardrives and did a RAIDZ3 setup. 
 Created the dataset `tank` to be the main or the root dataset. Subdatasets were:
